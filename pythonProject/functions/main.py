@@ -1,0 +1,40 @@
+# This is a sample Python script.
+
+# Press ⌃F5 to execute it or replace it with your code.
+# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+
+
+# def print_hi(name):
+#     # Use a breakpoint in the code line below to debug your script.
+#     print(f'Hi, {name}')  # Press F9 to toggle the breakpoint.
+#
+#
+# # Press the green button in the gutter to run the script.
+# if __name__ == '__main__':
+#     print_hi('PyCharm')
+
+# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# from flask import Flask, jsonify
+#
+# app = Flask(__name__)
+#
+# @app.route('/api/hello', methods=['GET'])
+# def hello_world():
+#     return jsonify(message="Hello, World!")
+#
+# if __name__ == '__main__':
+#     app.run(debug=True)
+from flask import Flask, jsonify
+import serverless_wsgi
+
+app = Flask(__name__)
+
+@app.route('/api/hello', methods=['GET'])
+def hello_world():
+    return jsonify(message="Hello, World!")
+
+def handler(event, context):
+    return serverless_wsgi.handle_request(app, event, context)
+
+if __name__ == '__main__':
+    app.run(debug=True)

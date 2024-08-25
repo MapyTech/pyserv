@@ -1,0 +1,8 @@
+[build]
+  functions = "functions"
+
+[dev]
+  command = "flask run"
+
+[functions]
+  directory = "functions"
